@@ -1,42 +1,5 @@
-'''
-bibliografia:
-
-item:
-0 nome
-1 sequencia_cod
-2 preco
-3 descricao
-4 quantidade_estoque
-
-pedido:
-0 codigo
-1 itens
-2 valor_total
-3 cupom
-4 status
-
-pedido:
-0 codigo
-1 itens
-2 valor_total
-3 cupom
-4 status
-
-'''
-
-# Base do projeto
-"""
-menu de itens
-cadastro -> atualização -> consulta
-detalhes do itens
-
-"""
 pedidos_ativos = []
 pedidos_finalizados = []
-
-# Lista para guardar todos os itens que forem cadastrados.
-
-
 todos_os_pedidos = []
 itens = []
 # gerador de códigos (incrementar)
@@ -156,19 +119,19 @@ def criar_pedido():
                 if quantidade > 0 and quantidade <= item[4]:
                     # --- INÍCIO DAS CORREÇÕES ---
                     
-                    subtotal_item = item[2] * quantidade # <--- CORREÇÃO 1: Calcula o subtotal SÓ para este item.
-                    valor_total += subtotal_item           # <--- CORREÇÃO 2: SOMA (+=) o subtotal ao total geral do pedido.
+                    subtotal_item = item[2] * quantidade.
+                    valor_total += subtotal_item           
                     
                     comprar.append(codigo)
                     comprar.append(item[0])
                     comprar.append(quantidade)
-                    comprar.append(subtotal_item)          # <--- CORREÇÃO 3: Adiciona o subtotal correto do item.
+                    comprar.append(subtotal_item)         
                     
                     # --- FIM DAS CORREÇÕES ---
                     
                     pedido_itens.append(comprar)
                     item[4] -= quantidade  # reduz o estoque
-                    print(f"{quantidade}x {item[0]} adicionado(s) ao pedido.")
+                    print(f"{quantidade} unidades de {item[0]} adicionado(s) ao pedido.")
                 elif quantidade <= 0:
                     print("A quantidade deve ser maior que zero.")
                 else:
@@ -386,23 +349,16 @@ def gerenciar_status_pedido():
         if codigo_pedido == '0':
             continue
 
-        # --- INÍCIO DA CORREÇÃO ---
-        
-        # 1. Inicia a variável como "não encontrado"
         pedido_marcado = None
         
-        # 2. Faz o loop para PROCURAR o pedido na lista de ativos
         for pedido in pedidos_ativos:
             if str(pedido[0]) == codigo_pedido:
                 pedido_marcado = pedido
                 break # Encontrou o pedido, para de procurar
 
-        # 3. DEPOIS do loop, verifica se algo foi encontrado
         if not pedido_marcado:
             print(f"\nErro: Pedido com ID {codigo_pedido} não encontrado ou não corresponde ao status selecionado.")
             continue # Volta para o menu do gerenciador
-
-        # --- FIM DA CORREÇÃO ---
 
         # O código abaixo só é executado se o pedido_marcado foi encontrado com sucesso.
         if sub_opcao == '1':
