@@ -88,7 +88,7 @@ AGUARDANDO APROVACAO → ACEITO → FAZENDO → FEITO → ESPERANDO ENTREGADOR �
 
 **Status disponíveis:**
 1. **AGUARDANDO APROVACAO** - Pedido criado, aguardando análise
-2. **ACEITO** - Pedido aprovado, pronto para iniciar preparo
+2. **ACEITO** - Pedido aprovado, pronto para iniciar o preparo
 3. **FAZENDO** - Pedido em preparação na cozinha
 4. **FEITO** - Pedido pronto, aguardando entregador
 5. **ESPERANDO ENTREGADOR** - Aguardando disponibilidade de entregador
